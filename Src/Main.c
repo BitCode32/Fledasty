@@ -1,12 +1,23 @@
 #include <Hallocy/Allocator.h>
+#include <Fledasty/Stack.h>
 #include <stdio.h>
 
 int main() {
-    char *my_string = (char*)hallocy_malloc(10);
-    hallocy_set_memory(my_string, 'a', 10);
+    fledasty_stack test_stack;
+    fledasty_stack_initialize(&test_stack);
 
-    printf("%s\n", my_string);
+    for (unsigned int i = 5; i < 10; i++) {
+        fledasty_stack_push(&test_stack, &i, sizeof(int));
+    }
 
-    hallocy_free(my_string);
+    printf("Peek: %d\n", *((int*)fledasty_stack_peek(&test_stack)));
+
+    for (unsigned int i = 0; i < 5; i++) {
+        int *popped_value = (int*)fledasty_stack_pop(&test_stack);
+        printf("Popped: %d\n", *popped_value);
+        hallocy_free(popped_value);
+    }
+
+    fledasty_stack_destroy(&test_stack);
     return 0;
 }
