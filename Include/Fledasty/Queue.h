@@ -14,8 +14,8 @@
  * -----------------------------------------------------------------------------
  * File: Queue.h
  * Description:
- *  This file contains the stack data structure and functions. It includes functions 
- *  to initialize, destroy, push, pop, peek and check if stack is empty.
+ *  This file contains the queue data structure and functions. It includes functions 
+ *  to initialize, destroy, push, pop, peek and check if queue is empty.
  * 
  * Author: BitCode32
  * -----------------------------------------------------------------------------

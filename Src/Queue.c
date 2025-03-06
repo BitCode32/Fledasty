@@ -14,7 +14,7 @@
  * -----------------------------------------------------------------------------
  * File: Queue.c
  * Description:
- *  This file contains the implementation of the stack functions. It includes 
+ *  This file contains the implementation of the queue functions. It includes 
  *  functions to initialize, destroy, push, pop and peek.
  * 
  * Author: BitCode32
