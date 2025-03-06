@@ -43,20 +43,20 @@ void fledasty_stack_destroy(fledasty_stack *current_stack) {
 }
 
 void fledasty_stack_push(fledasty_stack *current_stack, void *value, size_t size) {
-    fledasty_stack_node *new_node = (fledasty_stack_node*)hallocy_malloc(sizeof(fledasty_stack_node));
-    new_node->value = hallocy_malloc(size);
-    hallocy_copy_memory(new_node->value, value, size);
+    fledasty_stack_node *new_stack_node = (fledasty_stack_node*)hallocy_malloc(sizeof(fledasty_stack_node));
+    new_stack_node->value = hallocy_malloc(size);
+    hallocy_copy_memory(new_stack_node->value, value, size);
 
-    new_node->next = current_stack->start;
-    current_stack->start = new_node;
+    new_stack_node->next = current_stack->start;
+    current_stack->start = new_stack_node;
 }
 
 void *fledasty_stack_pop(fledasty_stack *current_stack) {
-    fledasty_stack_node *start_node = current_stack->start;
+    fledasty_stack_node *start_stack_node = current_stack->start;
 
-    current_stack->start = start_node->next;
-    void *value = start_node->value;
+    current_stack->start = start_stack_node->next;
+    void *value = start_stack_node->value;
 
-    hallocy_free(start_node);
+    hallocy_free(start_stack_node);
     return value;
 }

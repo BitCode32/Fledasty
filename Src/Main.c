@@ -1,23 +1,24 @@
 #include <Hallocy/Allocator.h>
 #include <Fledasty/Stack.h>
+#include <Fledasty/Queue.h>
 #include <stdio.h>
 
 int main() {
-    fledasty_stack test_stack;
-    fledasty_stack_initialize(&test_stack);
+    fledasty_queue test_queue;
+    fledasty_queue_initialize(&test_queue);
 
     for (unsigned int i = 5; i < 10; i++) {
-        fledasty_stack_push(&test_stack, &i, sizeof(int));
+        fledasty_queue_push(&test_queue, &i, sizeof(int));
     }
 
-    printf("Peek: %d\n", *((int*)fledasty_stack_peek(&test_stack)));
+    printf("Peek: %d\n", *((int*)fledasty_queue_peek(&test_queue)));
 
     for (unsigned int i = 0; i < 5; i++) {
-        int *popped_value = (int*)fledasty_stack_pop(&test_stack);
+        int *popped_value = (int*)fledasty_queue_pop(&test_queue);
         printf("Popped: %d\n", *popped_value);
         hallocy_free(popped_value);
     }
 
-    fledasty_stack_destroy(&test_stack);
+    fledasty_queue_destroy(&test_queue);
     return 0;
 }
