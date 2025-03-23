@@ -2,71 +2,50 @@
 #include <Fledasty/Stack.h>
 #include <Fledasty/Queue.h>
 #include <Fledasty/HashTable.h>
+#include <Fledasty/String.h>
 #include <stdio.h>
-
-size_t hash_string(void *key) {
-    size_t hash = 5831;
-
-    char *string_key = (char*)key;
-    int character = 0;
-    while ((character = *string_key++)) {
-        hash = ((hash << 5) + hash) + character;
-    }
-
-    return hash;
-}
-
-typedef struct {
-    char *name;
-    char *email;
-    unsigned int birth_day, birth_month, birth_year;
-} user;
-
+#include <windows.h>
 int main() {
-    fledasty_hash_table new_table;
-    fledasty_hash_table_initialize(&new_table, hash_string);
+    fledasty_string my_string;
+    fledasty_string_initialize(&my_string, "Test");
 
-    user new_user;
-    new_user.name = "BitCode32";
-    new_user.email = "tristanfranssen@strawhats.nl";
-    new_user.birth_day = 8;
-    new_user.birth_month = 3;
-    new_user.birth_year = 2025;
+    fledasty_string_append(&my_string, "123", 3);
+    printf("Append (Test123): %s\n", my_string.character_string);
+    fledasty_string_insert(&my_string, 0, "123", 3);
+    printf("Insert (123Test123): %s\n", my_string.character_string);
+    fledasty_string_remove(&my_string, "123", 3);
+    printf("Remove (Test123): %s\n", my_string.character_string);
+    fledasty_string_insert(&my_string, 1, "est1", 4);
+    printf("Insert (Test1est123): %s\n", my_string.character_string);
+    fledatsy_string_remove_range(&my_string, 1, 5);
+    printf("Remove (Test123): %s\n", my_string.character_string);
+    fledasty_string_insert(&my_string, my_string.size, "8", 1);
+    printf("Insert (Test1238): %s\n", my_string.character_string);
+    fledasty_string_pop(&my_string);
+    printf("Pop (Test123): %s\n", my_string.character_string);
 
-    fledasty_hash_table_insert(&new_table, new_user.name, 10, &new_user, sizeof(user));
+    fledasty_string copy_string;
+    fledasty_string_initialize(&copy_string, NULL);
+    fledasty_string_append(&copy_string, "123", 3);
+    printf("Append empty (123): %s\n", copy_string.character_string);
 
-    new_user.name = "BitCode64";
-    new_user.email = "BitCode64@strawhats.nl";
-    new_user.birth_day = 9;
-    new_user.birth_month = 4;
-    new_user.birth_year = 2025;
+    fledasty_string_copy(&copy_string, &my_string);
+    printf("Copy (Test123): %s\n", copy_string.character_string);
+    fledasty_string_replace(&copy_string, "123", 3, "4567", 4);
+    printf("Replace (Test4567): %s\n", copy_string.character_string);
+    fledasty_string_swap(&my_string, &copy_string);
+    printf("Swap (Test4567): %s\n", my_string.character_string);
 
-    fledasty_hash_table_insert(&new_table, new_user.name, 10, &new_user, sizeof(user));
-
-    if (!fledasty_hash_table_has_key(&new_table, "BitCode32", 10)) {
-        printf("BitCode32 not found!\n");
+    fledasty_string_clear(&copy_string);
+    if (fledasty_string_is_empty(&copy_string)) {
+        printf("Cleared string\n");
     }
 
-    if (!fledasty_hash_table_has_key(&new_table, "BitCode64", 10)) {
-        printf("BitCode64 not found!\n");
+    if (fledasty_string_has_character_string(&my_string, "Test", 4)) {
+        printf("String contains Test\n");
     }
 
-    user *stored_user = (user*)fledasty_hash_table_get(&new_table, "BitCode32", 10);
-    printf("name: %s\nemail:%s\nBirthdate: %d/%d/%d\n", stored_user->name, stored_user->email, stored_user->birth_day, stored_user->birth_month, stored_user->birth_year);
-
-    stored_user = (user*)fledasty_hash_table_get(&new_table, "BitCode64", 10);
-    printf("\nname: %s\nemail:%s\nBirthdate: %d/%d/%d\n", stored_user->name, stored_user->email, stored_user->birth_day, stored_user->birth_month, stored_user->birth_year);
-
-    fledasty_hash_table_remove(&new_table, "BitCode64", 10);
-    if (fledasty_hash_table_has_key(&new_table, "BitCode64", 10)) {
-        printf("BitCode64 was not removed!\n");
-    }
-
-    stored_user = (user*)fledasty_hash_table_get(&new_table, "BitCode64", 10);
-    if (stored_user != NULL) {
-        printf("Found non existing user!\n");
-    }
-
-    fledasty_hash_table_destroy(&new_table);
+    fledasty_string_destroy(&copy_string);
+    fledasty_string_destroy(&my_string);
     return 0;
 }
