@@ -1,10 +1,31 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * -----------------------------------------------------------------------------
+ * File: Main.c
+ * Description:
+ *  Testing file for the Fledasty library.
+ * 
+ * Author: BitCode32
+ * -----------------------------------------------------------------------------
+ */
 #include <Hallocy/Allocator.h>
 #include <Fledasty/Stack.h>
 #include <Fledasty/Queue.h>
 #include <Fledasty/HashTable.h>
 #include <Fledasty/String.h>
 #include <stdio.h>
-#include <windows.h>
+
 int main() {
     fledasty_string my_string;
     fledasty_string_initialize(&my_string, "Test");
