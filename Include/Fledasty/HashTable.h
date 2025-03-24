@@ -49,6 +49,6 @@ void fledasty_hash_table_remove(fledasty_hash_table *current_hash_table, void *k
 void fledasty_hash_table_resize(fledasty_hash_table *current_hash_table, size_t new_capacity);
 
 bool fledasty_hash_table_has_key(const fledasty_hash_table *current_hash_table, void *key, size_t key_size);
-inline bool fledasty_hash_table_is_empty(const fledasty_hash_table *current_hash_table) { return current_hash_table->size == 0; }
+static inline bool fledasty_hash_table_is_empty(const fledasty_hash_table *current_hash_table) { return current_hash_table->size == 0; }
 
 #endif

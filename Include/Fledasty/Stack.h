@@ -41,8 +41,8 @@ void fledasty_stack_destroy(fledasty_stack *current_stack);
 
 void fledasty_stack_push(fledasty_stack *current_stack, void *value, size_t size);
 void *fledasty_stack_pop(fledasty_stack *current_stack);
-inline void *fledasty_stack_peek(const fledasty_stack *current_stack) { return (current_stack->start != NULL) ? current_stack->start->value : NULL; }
+static inline void *fledasty_stack_peek(const fledasty_stack *current_stack) { return (current_stack->start != NULL) ? current_stack->start->value : NULL; }
 
-inline bool fledasty_stack_is_empty(const fledasty_stack *current_stack) { return current_stack->size == 0; }
+static inline bool fledasty_stack_is_empty(const fledasty_stack *current_stack) { return current_stack->size == 0; }
 
 #endif

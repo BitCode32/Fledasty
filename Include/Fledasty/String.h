@@ -47,8 +47,8 @@ void fledasty_string_remove(fledasty_string *current_string, const char *charact
 void fledatsy_string_remove_range(fledasty_string *current_string, const size_t start_index, const size_t end_index);
 void fledasty_string_clear(fledasty_string *current_string);
 
-bool fledasty_string_has_character_string(fledasty_string *current_string, const char *character_string, const size_t size);
-inline bool fledasty_string_is_empty(fledasty_string *current_string) { return current_string->size == 0; };
+bool fledasty_string_has_character_string(const fledasty_string *current_string, const char *character_string, const size_t size);
+static inline bool fledasty_string_is_empty(const fledasty_string *current_string) { return current_string->size == 0; }
 
 size_t fledasty_string_character_string_size(const char *character_string);
 

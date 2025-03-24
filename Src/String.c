@@ -158,7 +158,7 @@ void fledasty_string_clear(fledasty_string *current_string) {
     current_string->character_string[0] = '\0';
 }
 
-bool fledasty_string_has_character_string(fledasty_string *current_string, const char *character_string, const size_t size) {
+bool fledasty_string_has_character_string(const fledasty_string *current_string, const char *character_string, const size_t size) {
     size_t max_index = current_string->size - size;
     size_t current_index = 0;
     while (current_index < max_index) {

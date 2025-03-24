@@ -41,8 +41,8 @@ void fledasty_queue_destroy(fledasty_queue *current_queue);
 
 void fledasty_queue_push(fledasty_queue *current_queue, void *value, size_t size);
 void *fledasty_queue_pop(fledasty_queue *current_queue);
-inline void *fledasty_queue_peek(const fledasty_queue *current_queue) { return (current_queue->end != NULL) ? current_queue->end->value : NULL; }
+static inline void *fledasty_queue_peek(const fledasty_queue *current_queue) { return (current_queue->end != NULL) ? current_queue->end->value : NULL; }
 
-inline bool fledasty_queue_is_empty(const fledasty_queue *current_queue) { return current_queue->size == 0; }
+static inline bool fledasty_queue_is_empty(const fledasty_queue *current_queue) { return current_queue->size == 0; }
 
 #endif
