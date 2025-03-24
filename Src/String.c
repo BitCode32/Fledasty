@@ -14,8 +14,10 @@
  * -----------------------------------------------------------------------------
  * File: String.c
  * Description:
- *  This file contains the implementation of the queue functions. It includes 
- *  functions to initialize, destroy, push, pop and peek.
+ *  This file contains the implementation of the string functions. It includes 
+ *  functions to initialize, destroy, append, insert, replace, copy, swap, pop,
+ *  remove, remove range, check if string contains character and calculate string
+ *  size.
  * 
  * Author: BitCode32
  * -----------------------------------------------------------------------------
