@@ -12,10 +12,11 @@
  * limitations under the License.
  * 
  * -----------------------------------------------------------------------------
- * File: Queue.c
+ * File: HashTable.h
  * Description:
- *  This file contains the implementation of the queue functions. It includes 
- *  functions to initialize, destroy, push, pop and peek.
+ *  This file contains the hashtable structure and functions. It includes functions 
+ *  to initialize, destroy, insert, get, remove, resize and check if hashtable 
+ *  contains key.
  * 
  * Author: BitCode32
  * -----------------------------------------------------------------------------
